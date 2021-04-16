@@ -81,11 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
     "essentially": false,
     "repeated": false,
   };
-  List<bool> ummList = List.generate(1, (_) => false);
-  List<bool> yeahList = List.generate(1, (_) => false);
-  List<bool> likeList = List.generate(1, (_) => false);
-  // TO DO: MAKE THIS INTO DICTIONARY AND ADD A FXN THAT WILL
-  // Reference dict to change state from f to t of vice versa
 
   void _incrementCounter() {
     setState(() {
