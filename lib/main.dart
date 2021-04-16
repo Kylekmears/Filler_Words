@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     MaterialColor myColor = MaterialColor(0xFF00838F, shading);
     return MaterialApp(
       title: 'Filler Words',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -33,12 +34,24 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: myColor
+        primarySwatch: myColor,
       ),
       home: MyHomePage(title: 'Filler Words'),
     );
   }
 }
+
+/*
+class ToggleTile extends StatefulWidget{
+  final bool boolean;
+
+  @override
+  _ToggleTile createState() => _ToggleTile(boolean) // WHAT DOES ANY OF THIS DO?
+}
+
+class _ToggleTile extends State{
+
+}*/
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -90,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -111,19 +125,37 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            ToggleButtons(
-                children: [
-                  Text("Umm"),
-                ],
-                onPressed: (int index) {
-                  setState(() {
+            Card(
+              child: CheckboxListTile(
+                secondary: FlutterLogo(size: 44),
+                title: Text("Umm"),
+                subtitle: Text("Umm, erm, uhh, and ahh"),
+                value: ummList[0],
+                onChanged: (bool value){
+                  setState((){
                     ummList[0] = ummList[0] ? false : true;
                   });
                 },
-                isSelected: ummList),
+
+                //trailing: Icon(Icons.check_box_outline_blank), // can trailing icon be a widget that checks ummList?
+                //enabled: true,
+              ),
+            ),
+            Row(
+              children: <Widget>[
+                ToggleButtons( // Change to list Tiles? Iono, man
+                    children: [
+                      Text("Umm"),
+                    ],
+                    onPressed: (int index) {
+                      setState(() {
+                        ummList[0] = ummList[0] ? false : true;
+                      });
+                    },
+                    isSelected: ummList),
+                Text("Umm, erm, uhh, and ahh")
+            ],
+            ),
             ToggleButtons(
                 children: [
                   Text("Yeah"),
