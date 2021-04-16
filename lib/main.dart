@@ -73,6 +73,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  var wordChoice = {
+    "umm": false,
+    "like": false,
+    "yeah": false,
+    "you know": false,
+    "essentially": false,
+    "repeated": false,
+  };
   List<bool> ummList = List.generate(1, (_) => false);
   List<bool> yeahList = List.generate(1, (_) => false);
   List<bool> likeList = List.generate(1, (_) => false);
@@ -125,36 +133,88 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              "Select the phrases you want monitored",
+              style: TextStyle(fontSize: 18,),
+            ),
+            Divider(),
             Card(
               child: CheckboxListTile(
                 secondary: FlutterLogo(size: 44),
                 title: Text("Umm"),
                 subtitle: Text("Umm, erm, uhh, and ahh"),
-                value: ummList[0],
+                value: wordChoice["umm"],
                 onChanged: (bool value){
                   setState((){
-                    ummList[0] = ummList[0] ? false : true;
+                    wordChoice["umm"] = wordChoice["umm"] ? false : true;
                   });
                 },
-
-                //trailing: Icon(Icons.check_box_outline_blank), // can trailing icon be a widget that checks ummList?
-                //enabled: true,
               ),
             ),
-            Row(
-              children: <Widget>[
-                ToggleButtons( // Change to list Tiles? Iono, man
-                    children: [
-                      Text("Umm"),
-                    ],
-                    onPressed: (int index) {
-                      setState(() {
-                        ummList[0] = ummList[0] ? false : true;
-                      });
-                    },
-                    isSelected: ummList),
-                Text("Umm, erm, uhh, and ahh")
-            ],
+            Card(
+              child: CheckboxListTile(
+                secondary: FlutterLogo(size: 44),
+                title: Text("Like"),
+                subtitle: Text("Like"),
+                value: wordChoice["like"],
+                onChanged: (bool value){
+                  setState((){
+                    wordChoice["like"] = wordChoice["like"] ? false : true;
+                  });
+                },
+              ),
+            ),
+            Card(
+              child: CheckboxListTile(
+                secondary: FlutterLogo(size: 44),
+                title: Text("So Yeah And"),
+                subtitle: Text("Combinations of yeah, and, or so"),
+                value: wordChoice["yeah"],
+                onChanged: (bool value){
+                  setState((){
+                    wordChoice["yeah"] = wordChoice["yeah"] ? false : true;
+                  });
+                },
+              ),
+            ),
+            Card(
+              child: CheckboxListTile(
+                secondary: FlutterLogo(size: 44),
+                title: Text("You Know"),
+                subtitle: Text("You know?"),
+                value: wordChoice["you know"],
+                onChanged: (bool value){
+                  setState((){
+                    wordChoice["you know"] = wordChoice["you know"] ? false : true;
+                  });
+                },
+              ),
+            ),
+            Card(
+              child: CheckboxListTile(
+                secondary: FlutterLogo(size: 44),
+                title: Text("Essentially"),
+                subtitle: Text("Essentially"),
+                value: wordChoice["essentially"],
+                onChanged: (bool value){
+                  setState((){
+                    wordChoice["essentially"] = wordChoice["essentially"] ? false : true;
+                  });
+                },
+              ),
+            ),
+            Card(
+              child: CheckboxListTile(
+                secondary: FlutterLogo(size: 44),
+                title: Text("Repeated Words"),
+                subtitle: Text("Stuttering and false starts"),
+                value: wordChoice["repeated"],
+                onChanged: (bool value){
+                  setState((){
+                    wordChoice["repeated"] = wordChoice["repeated"] ? false : true;
+                  });
+                },
+              ),
             ),
             Text(
               '$_counter',
