@@ -156,26 +156,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text("Umm, erm, uhh, and ahh")
             ],
             ),
-            ToggleButtons(
-                children: [
-                  Text("Yeah"),
-                ],
-                onPressed: (int index) {
-                  setState(() {
-                    yeahList[0] = yeahList[0] ? false : true;
-                  });
-                },
-                isSelected: yeahList),
-            ToggleButtons(
-                children: [
-                  Text("Like"),
-                ],
-                onPressed: (int index) {
-                  setState(() {
-                    likeList[0] = likeList[0] ? false : true;
-                  });
-                },
-                isSelected: likeList),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
