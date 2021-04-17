@@ -1,11 +1,22 @@
+/*
+TODO:
+1) Implement basic audio streaming from mic
+  - Flutter_sound
+    - Check stream format
+    - Make simple recording
+
+2) Determine input for audio stream
+3) Fix pixel overflow in horizontal view
+ */
+
 import 'package:flutter/material.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     Map<int, Color> shading = {
@@ -41,18 +52,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/*
-class ToggleTile extends StatefulWidget{
-  final bool boolean;
-
-  @override
-  _ToggleTile createState() => _ToggleTile(boolean) // WHAT DOES ANY OF THIS DO?
-}
-
-class _ToggleTile extends State{
-
-}*/
-
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -72,7 +71,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   var wordChoice = {
     "umm": false,
     "like": false,
@@ -82,16 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
     "repeated": false,
   };
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: CheckboxListTile(
                 secondary: FlutterLogo(size: 44),
                 title: Text("You Know"),
-                subtitle: Text("You know?"),
+                subtitle: Text(""),
                 value: wordChoice["you know"],
                 onChanged: (bool value){
                   setState((){
@@ -189,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: CheckboxListTile(
                 secondary: FlutterLogo(size: 44),
                 title: Text("Essentially"),
-                subtitle: Text("Essentially"),
+                subtitle: Text(""),
                 value: wordChoice["essentially"],
                 onChanged: (bool value){
                   setState((){
@@ -211,18 +199,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
