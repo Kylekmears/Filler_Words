@@ -102,12 +102,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
         centerTitle: true,
-      ),
+      ),*/
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -234,6 +234,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 },
               ),
+            ),
+            Container(
+              height: 300,
+              child: RecordToStreamExample(),
             ),
           ],
         ),
@@ -438,10 +442,7 @@ class _RecordToStreamExampleState extends State<RecordToStreamExample> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.blue,
-      appBar: AppBar(
-        title: const Text('Record to Stream ex.'),
-      ),
+      backgroundColor: Color.fromRGBO(0, 131, 143, 1.0),
       body: makeBody(),
     );
   }
